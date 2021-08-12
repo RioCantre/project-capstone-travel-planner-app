@@ -1,0 +1,22 @@
+{
+  "name": "project-capstone-travel-planner-app",
+  "version": "1.0.0",
+  "description": "A capstone travel planner project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RioCantre/project-capstone-travel-planner-app.git"
+  },
+  "author": "Rio Cantre",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RioCantre/project-capstone-travel-planner-app/issues"
+  },
+  "homepage": "https://github.com/RioCantre/project-capstone-travel-planner-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
