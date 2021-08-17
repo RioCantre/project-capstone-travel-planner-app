@@ -1,12 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Capstone Travel planner app project </title>
+    <title> Travel planner app : Adventuristic </title>
 </head>
+
 <body>
-    
+    <header>
+        <nav>
+            <a href="#">Home</a>
+        </nav>
+    </header>
+    <main>
+        <section id="base-content">
+            <div id="travel-detail">
+                <h1>Adventuristic</h1>
+                <h3>Plan your next adventure</h3>
+                <form>
+                    <div id="city-from">
+                        <input type="text" class="city-from" placeholder="From...">
+                    </div>
+                    <div id="city-to">
+                        <input type="text" class="city-to" placeholder="To...">
+                    </div>
+                    <div id="travel-date">
+                        <input placeholder="Departure date" class="form-control" type="text"
+                            onfocus="(this.type='date')" id="depart-date">
+                        <input placeholder="Arrival date" class="form-control" type="text" onfocus="(this.type='date')"
+                            id="arrival-date">
+                    </div>
+                    <button type="submit" id="generate"> Search </button>
+                </form>
+            </div>
+            <div id="main-img">
+                <img src="" alt="">
+            </div>
+        </section>
+        <div id="container">
+            <h4>Your current list</h4>
+            <div id="city-list">
+                <div id="travel-card-1">
+                    <div id="city-img">
+                        <img src="" alt="">
+                    </div>
+                    <div id="destination-content">
+                        <div id="destination-info">
+                            <div id="city">
+                                Barcelona
+                            </div>
+                            <div id="country">
+                                Spain
+                            </div>
+                            <div id="date-depature">
+                                Departure: 12/12/12
+                            </div>
+                            <div id="days-remaining">
+                                (in 22 days away)
+                            </div>
+                        </div>
+                        <div id="forecast">
+                            <ul>
+                                <li>
+                                    <div id="icon">
+                                        <img src="" alt="">
+                                    </div>
+                                    <div id="day-temp">
+                                        <div class="day">Mon</div>
+                                        <span class="cel-temp">9℃ </span>|
+                                        <span class="fah-temp"> 30℉</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <button id="remove-button">
+                            Remove this trip
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            <div id="img-display">
+                <img src="" alt="">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div id="img-footer">
+            <img src="" alt=""> <a href="#">Go up!</a>
+        </div>
+        <div>
+            Copyright &copy; 2021 - &nbsp;<a href="https://musing-ptolemy-95f7d2.netlify.app/index.html"
+                target="_blank"> Rio Cantre</a>
+            <br>
+            Illustrations by <a href="https://dribbble.com/muratkalkavan" target="_blank"> Murat Kalkavan</a>
+        </div>
+    </footer>
 </body>
+
 </html>

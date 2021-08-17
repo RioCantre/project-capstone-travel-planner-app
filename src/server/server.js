@@ -3,7 +3,7 @@ const express = require('express')
 const app = express()
 
 // Initialize the main project folder
-app.use(express.static('src/client'))
+app.use(express.static('dist'))
 
 console.log(__dirname)
 
@@ -16,7 +16,7 @@ app.use(cors());
 
 // GET route
 app.get('/',  (req, res) => {
-    res.sendFile('/clent/views/index.html');
+    res.sendFile('dist/index.html');
 })
 
 
