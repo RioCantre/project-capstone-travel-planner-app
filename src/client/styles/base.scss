@@ -1,0 +1,29 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: $background-color;
+    padding: 0;
+    font-family: $secondary-font;
+    width: 1200px;
+    display: block;
+    margin: auto;
+    
+}
+header {
+    padding: 20px;
+    nav {
+        display: flex;
+        justify-content: flex-end;
+        a {
+            text-decoration: none;
+            padding: 30px;
+            font-size: 13px;
+            color: hsla(199, 48%, 19%, 1);
+        }
+        a:hover {
+            color: hsla(189, 53%, 56%, 1);
+        }
+    }
+}
