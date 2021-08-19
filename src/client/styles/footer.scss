@@ -18,12 +18,12 @@ footer {
  
     a {
         text-decoration: none;
-        color: #193948;
+        color: $primary-color;
     }
     
  
     a:hover {
-        color: hsla(189, 53%, 56%, 1);
+        color: $secondary-color;
         cursor: pointer;
     }
 }

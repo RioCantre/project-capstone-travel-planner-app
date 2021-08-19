@@ -1,0 +1,95 @@
+#container {
+  background-color: $secondary-light;
+  border-radius: 30px;
+
+  
+  h4 {
+      text-align: center;
+      padding: 30px;
+    }
+    #city-list {
+        display: flex;
+        justify-content: center;
+        #travel-card{
+            width: 550px;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            background-color: $accent-color;
+            padding: 30px;
+            border-radius: 20px;
+            margin: auto;
+            
+            
+        }
+        #city-img img {
+            width: 250px;
+            margin-right: 30px;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            height: 100%;
+        }
+        
+        #destination-content{
+            color: $font-color-light;
+            
+            #city {
+                font-size: 24px;
+            }
+            #country {
+                font-size: 20px;
+            }
+            #date-depature,
+            #days-remaining{
+                font-size: 14px;
+            }
+            #forecast {
+                padding: 50px 10px;
+                ul {
+                    margin: 0;
+                    padding-left: 0;
+                    li{
+                        display: flex;
+                        justify-content: center;
+                        list-style: none;
+                        margin: 0;
+                        
+                        #day-temp {
+                            text-align: center;
+                            .cel-temp,
+                            .fah-temp {
+                                font-size: 13px;
+                            }
+                        }
+                        
+                        #icon img {
+                            width: 50px;
+                            margin-right: 20px;
+                        }
+                    }
+                }
+            }
+            
+            #remove-button{
+                padding: 20px;
+                border-radius: 30px;
+                border: none;
+                width: 200px;
+                margin: 0;
+                background-color: $primary-color;
+                color:$font-color-light;
+                &:hover {
+                    background: $secondary-color;
+                    color:$font-color-light;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+    
+    #img-display img {
+        width: 700px;
+        margin: auto;
+        display: block;
+    }
+}
