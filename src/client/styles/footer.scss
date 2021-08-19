@@ -1,0 +1,29 @@
+
+footer {
+  text-align: center;
+  margin: 40px;
+  font-size: 13px;
+  #img-footer {
+      display: flex;
+      justify-content: center;
+    }
+    
+    #img-footer img {
+        width: 100px;
+    }
+    #img-footer a {
+        margin-top: 70px;
+    }
+    
+ 
+    a {
+        text-decoration: none;
+        color: $primary-color;
+    }
+    
+ 
+    a:hover {
+        color: $secondary-color;
+        cursor: pointer;
+    }
+}
