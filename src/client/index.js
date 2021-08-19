@@ -1,10 +1,15 @@
 import './styles/main.scss';
 
-import img1 from './assets/img1.png';
+import image from './assets/img1.png';
+import image2 from './assets/img2.png'
+
 const img = document.querySelector('.main-img');
-img.src = img1;
+const img2 = document.querySelector('.img-footer');
+img.src = image;
+img2.src = image2;
 
 
 export {
-    img
+    img,
+    img2
 }
