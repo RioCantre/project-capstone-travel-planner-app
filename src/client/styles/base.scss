@@ -20,10 +20,10 @@ header {
             text-decoration: none;
             padding: 30px;
             font-size: 13px;
-            color: hsla(199, 48%, 19%, 1);
+            color: $primary-color;
         }
         a:hover {
-            color: hsla(189, 53%, 56%, 1);
+            color: $secondary-color;
         }
     }
 }
