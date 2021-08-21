@@ -12,13 +12,22 @@ app.use(cors());
 dotenv.config();
 console.log(__dirname)
 
+projectData = {};
+
+const apiKey = {
+    geoName = process.env.GeoUsername,
+    weatherBit = process.env.WbKey,
+    pixabay = process.env.PixKey
+}
 
 // GET route
 app.get('/',  (req, res) => {
     res.sendFile('dist/index.html');
 })
 
-projectData = {};
+app.get('/getKeys', (req, res) => {
+    res.send(apiKey);
+})
 
 app.post('/addEntry', (req, res) => {
     const entry = req.body;

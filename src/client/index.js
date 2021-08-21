@@ -1,3 +1,5 @@
+import './js/app.js'
+
 import './styles/main.scss';
 
 import image from './assets/img1.png';
@@ -12,8 +14,3 @@ img.src = image;
 img2.src = image2;
 img3.src = image3;
 
-export {
-    img,
-    img2,
-    img3
-}

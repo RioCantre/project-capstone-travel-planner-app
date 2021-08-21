@@ -11,9 +11,7 @@
 <body>
     <header>
         <nav>
-            <ul id="navBar">
-
-            </ul>  
+            <a href="#author-info">Contact</a>
         </nav>
     </header>
     <main>
@@ -21,7 +19,7 @@
             <div id="travel-detail">
                 <h1>Adventuristic</h1>
                 <h3>Plan your next adventure</h3>
-                <form>
+                <form onsubmit="return Client.handleSubmit(event)">
                     <div id="city-from">
                         <input type="text" class="city-from" placeholder="From...">
                     </div>
@@ -34,7 +32,7 @@
                         <input placeholder="Arrival date" class="form-control" type="text" onfocus="(this.type='date')"
                             id="arrival-date">
                     </div>
-                    <button type="submit" id="generate"> Search </button>
+                    <button type="submit" id="generate" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)"> Search </button>
                 </form>
             </div>
             <div id="main-img">
@@ -85,15 +83,15 @@
                 
             </div>
             <div id="img-display">
-                <img class="img-display" src="" alt="">
+                <img class="img-display" src="" alt="Adventure is waiting">
             </div>
         </div>
     </main>
     <footer>
         <div id="img-footer">
-            <img class="img-footer" src="" alt=""> <a href="#">Go up!</a>
+            <img class="img-footer" src="" alt="footer display"> <a href="#">Go up!</a>
         </div>
-        <div>
+        <div id="author-info">
             Copyright &copy; 2021 - &nbsp;<a href="https://musing-ptolemy-95f7d2.netlify.app/index.html"
                 target="_blank"> Rio Cantre</a>
             <br>
