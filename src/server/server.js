@@ -14,24 +14,29 @@ console.log(__dirname)
 
 projectData = {};
 
-const apiKey = {
-    geoName = process.env.GeoUsername,
-    weatherBit = process.env.WbKey,
-    pixabay = process.env.PixKey
-}
-
+const geoUrl = 'http://api.geonames.org/searchJSON?q';
+const weatherUrl = 'https://api.weatherbit.io/v2.0/forecast/daily?';
+const pixUrl = 'https://pixabay.com/api/?';
+ 
 // GET route
 app.get('/',  (req, res) => {
     res.sendFile('dist/index.html');
+})
+
+app.get('/test',  (req, res) => {
+    res.send(mockAPIResponse)
 })
 
 app.get('/getKeys', (req, res) => {
     res.send(apiKey);
 })
 
-app.post('/addEntry', (req, res) => {
-    const entry = req.body;
+app.post('/addEntry', async (req, res) => {
+    const entry = req.body.input;
     projectData = entry
+
+    const GeoNames = `${geoUrl}=${destination}&maxRows=1&username=${process.env.GeoUsername}`;
+
     res.send(projectData)
 })
 
