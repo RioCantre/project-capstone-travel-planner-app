@@ -1,4 +1,5 @@
 var path = require('path')
+const mockAPIResponse = require('./mockAPI.js')
 const express = require('express')
 const dotenv = require('dotenv');
 const cors = require('cors');
@@ -27,17 +28,17 @@ app.get('/test',  (req, res) => {
     res.send(mockAPIResponse)
 })
 
-app.get('/getKeys', (req, res) => {
-    res.send(apiKey);
+app.get('/all', (req, res) => {
+    res.send(projectData);
 })
 
-app.post('/addEntry', async (req, res) => {
-    const entry = req.body.input;
-    projectData = entry
+app.post('/addEntry', (req, res) => {
+    addEntry = req.body;
+    projectData.push(addEntry);
+});
 
-    const GeoNames = `${geoUrl}=${destination}&maxRows=1&username=${process.env.GeoUsername}`;
-
-    res.send(projectData)
+app.post('/remove', (req, res) => {
+    
 })
 
 

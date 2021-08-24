@@ -1,13 +1,17 @@
 const path = require("path")
 const webpack = require("webpack")
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebPackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 
 module.exports = {
     entry: './src/client/index.js',
     mode: 'production',
+    optimization: {
+        minimizer: [new OptimizeCSSAssetsPlugin({})],
+    },
     output: {
         libraryTarget: 'var',
         library: 'Client'
@@ -27,7 +31,7 @@ module.exports = {
                     test: /\.(png|jpe?g|gif)$/i,
                     loader: 'file-loader',
                     options: {
-                        name: '[path][name].[ext]'
+                        name: '[path][name].[ext]',
                     }
                 }
             ]
@@ -37,7 +41,13 @@ module.exports = {
             template: "./src/client/views/index.html",
             filename: "./index.html"
         }),
-        new MiniCssExtractPlugin({ filename: "[name].css" })
+        new MiniCssExtractPlugin({ filename: "[name].css" }),
+        new CleanWebpackPlugin({
+            dry: true,
+            verbose: true,
+            cleanStaleWebpackAssets: true,
+            protectWebpackAssets: false
+        })
         
     ]
 }
