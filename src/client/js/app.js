@@ -1,5 +1,5 @@
 
-const getData = async (url) => {
+export const getData = async (url) => {
   const response = await fetch(url);
   try {
     const data = await response.json();
@@ -10,7 +10,7 @@ const getData = async (url) => {
   }
 };
 
-const postData = async (url = "", data = {}) => {
+export const postData = async (url = "", data = {}) => {
   const response = await fetch(url, {
     method: "POST",
     credentials: "same-origin",
@@ -29,4 +29,9 @@ const postData = async (url = "", data = {}) => {
   }
 };
 
-export { getData, postData };
+export const showDaysLeft = (currentDate, departDate) => {
+  return Math.ceil(
+    Math.abs(new Date(departDate) - new Date(currentDate)) /
+      (1000 * 60 * 60 * 24)
+  );
+};
