@@ -1,7 +1,8 @@
 var path = require('path')
-const dataAPIResponse = require('./dataAPI.js')
+
 const express = require('express')
 const cors = require('cors');
+const dataAPI = require('./dataAPI.js');
 const app = express()
 require('dotenv').config();
 
@@ -12,24 +13,29 @@ app.use(cors());
 
 
 console.log(__dirname)
-
+let projectData = {};
  
 // GET route
 app.get('/',  (req, res) => {
     res.sendFile('dist/index.html');
 })
 
-app.get('/test',  (req, res) => {
-    res.send(dataAPIResponse)
-})
-
-
 // Post data
-app.post('/addEntry',  async (req, res) => {
-    const trip = encodeURI(req.body.input);
-    const response = await fetch(trip);
-    const data = await response.json();
-    res.send(data)
+app.post('/addEntry', async (req, res) => {
+    try {
+        const trip = encodeURI(req.body.input);
+        const response = await dataAPI(trip);
+        res.send(response)
+    } catch (error) {
+        console.log("error", error);
+        return error;
+    }
+});
+
+// Delete trip entry from the server
+app.post("/remove", (req, res) => {
+  let { id } = req.body;
+  projectData = projectData.filter((trip) => trip.id !== id);
 });
 
 
@@ -39,3 +45,4 @@ app.listen(port, () => {
  console.log('app listening on port 5000!')
 })
 
+module.export = app;

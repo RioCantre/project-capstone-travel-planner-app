@@ -1,4 +1,4 @@
-import './js/app.js'
+import { getData, postData } from './js/app';
 import './styles/main.scss';
 import './js/formHandler'
 
@@ -15,3 +15,7 @@ img.src = image;
 img2.src = image2;
 img3.src = image3;
 
+export {
+    getData,
+    postData
+}
