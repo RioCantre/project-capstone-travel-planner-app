@@ -1,17 +1,14 @@
 import { getData, postData, showDaysLeft } from './app';
 
-const dataResult = document.querySelector('#city-list');
-
-
 document.getElementById('generate').addEventListener('click', generateEntry);
 
 export async function generateEntry(event) {
     event.preventDefault();
     let city = document.getElementById('city-to').value;
     let departDate = document.getElementById('depart-date').value;
-    let arrivalDate = docuemnt.getElementById('arrival-date').value;
+    let returnDate = document.getElementById('return-date').value;
 
-    if (city === '' || departDate === '' || arrivalDate === '') {
+    if (city === '' || departDate === '' || returnDate === '') {
         alert('Details are required to proceed.');
         return false;
     } else {

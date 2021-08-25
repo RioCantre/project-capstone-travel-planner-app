@@ -1,6 +1,6 @@
 import { getData, postData, showDaysLeft } from './js/app';
 import './styles/main.scss';
-import './js/formHandler'
+import { generateEntry } from './js/formHandler';
 
 
 import image from './assets/img1.png';
@@ -18,5 +18,6 @@ img3.src = image3;
 export {
     getData,
     postData,
-    showDaysLeft
+    showDaysLeft,
+    generateEntry
 }
