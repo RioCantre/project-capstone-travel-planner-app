@@ -1,6 +1,7 @@
 import './js/app.js'
-
 import './styles/main.scss';
+import './js/formHandler'
+
 
 import image from './assets/img1.png';
 import image2 from './assets/img2.png';

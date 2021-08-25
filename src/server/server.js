@@ -1,23 +1,18 @@
 var path = require('path')
-const mockAPIResponse = require('./mockAPI.js')
+const dataAPIResponse = require('./dataAPI.js')
 const express = require('express')
-const dotenv = require('dotenv');
 const cors = require('cors');
 const app = express()
+require('dotenv').config();
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json());
 app.use(express.static('dist'))
 app.use(cors());
 
-dotenv.config();
+
 console.log(__dirname)
 
-projectData = {};
-
-const geoUrl = 'http://api.geonames.org/searchJSON?q';
-const weatherUrl = 'https://api.weatherbit.io/v2.0/forecast/daily?';
-const pixUrl = 'https://pixabay.com/api/?';
  
 // GET route
 app.get('/',  (req, res) => {
@@ -25,21 +20,17 @@ app.get('/',  (req, res) => {
 })
 
 app.get('/test',  (req, res) => {
-    res.send(mockAPIResponse)
+    res.send(dataAPIResponse)
 })
 
-app.get('/all', (req, res) => {
-    res.send(projectData);
-})
 
-app.post('/addEntry', (req, res) => {
-    addEntry = req.body;
-    projectData.push(addEntry);
+// Post data
+app.post('/addEntry',  async (req, res) => {
+    const trip = encodeURI(req.body.input);
+    const response = await fetch(trip);
+    const data = await response.json();
+    res.send(data)
 });
-
-app.post('/remove', (req, res) => {
-    
-})
 
 
 // designates what port the app will listen to for incoming requests

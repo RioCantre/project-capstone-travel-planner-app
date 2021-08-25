@@ -19,7 +19,7 @@
             <div id="travel-detail">
                 <h1>Adventuristic</h1>
                 <h3>Plan your next adventure</h3>
-                <form onsubmit="return Client.handleSubmit(event)">
+                <form>
                     <div id="city-from">
                         <input type="text" class="city-from" placeholder="From...">
                     </div>
@@ -29,10 +29,10 @@
                     <div id="travel-date">
                         <input placeholder="Departure date" class="form-control" type="text"
                             onfocus="(this.type='date')" id="depart-date">
-                        <input placeholder="Arrival date" class="form-control" type="text" onfocus="(this.type='date')"
-                            id="arrival-date">
+                        <input placeholder="return date" class="form-control" type="text" onfocus="(this.type='date')"
+                            id="return-date">
                     </div>
-                    <button type="submit" id="generate" onclick="return Client.handleSubmit(event)" onsubmit="return handleSubmit(event)"> Search </button>
+                    <button type="submit" id="generate"> Search </button>
                 </form>
             </div>
             <div id="main-img">

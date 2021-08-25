@@ -8,9 +8,8 @@ module.exports = {
     devtool: 'source-map',
     stats: 'verbose',
     output: {
-        libraryTarget: 'var',
-        library: 'Client'
-    },
+		clean: true,
+	},
     module: {
             rules: [
                 {
