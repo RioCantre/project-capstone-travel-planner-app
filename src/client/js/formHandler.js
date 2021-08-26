@@ -46,11 +46,15 @@ export async function generateEntry(event){
         length = getDaysLeft(returnDate, departDate);
         id = Date.now();
 
+        updateUI();
+
     } else {
         alert('Details are required to proceed.');
     }
 }
 
-export async function generateResult(entry, data, ui, id) {
-    
+export async function generateResult(entry, data, id) {
+    let deleteBtn = document.getElementById(`remove-button${id}`);
+    let form = 
+
 }

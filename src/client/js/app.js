@@ -1,15 +1,4 @@
 
-export const getData = async (url) => {
-  const response = await fetch(url);
-  try {
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log("error", error);
-  }
-};
-
 export const postData = async (url = "", data = {}) => {
   const response = await fetch(url, {
     method: "POST",
@@ -39,5 +28,6 @@ export const showDaysLeft = (currentDate, departDate) => {
 export const generateForm = ( city, departDate, returnDate) => {
   if (( city, departDate, returnDate !== "")) return true;
 };
+
 
 
