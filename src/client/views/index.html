@@ -19,7 +19,7 @@
             <div id="travel-detail">
                 <h1>Adventuristic</h1>
                 <h3>Plan your next adventure</h3>
-                <form>
+                <form onsubmit="return Client.generateForm(event)">
                     <div id="city-from">
                         <input type="text" class="city-from" placeholder="From...">
                     </div>
@@ -32,16 +32,18 @@
                         <input placeholder="Return date" class="form-control" type="text" onfocus="(this.type='date')"
                             id="return-date">
                     </div>
-                    <button type="submit" id="generate"> Search </button>
+                    <button type="submit" id="generate" onclick="return Client.generateForm(event)"> Search </button>
                 </form>
             </div>
             <div id="main-img">
                 <img class="main-img" src="" alt="Adventure is out there photo">
             </div>
         </section>
+        
         <div id="container">
             <h4>Your current list</h4>
             <div id="city-list">
+
                 <!-- <div id="travel-card">
                     <div id="city-img">
                         <img src="" alt="">

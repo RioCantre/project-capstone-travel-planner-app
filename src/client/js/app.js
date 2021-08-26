@@ -35,3 +35,9 @@ export const showDaysLeft = (currentDate, departDate) => {
       (1000 * 60 * 60 * 24)
   );
 };
+
+export const generateForm = ( city, departDate, returnDate) => {
+  if (( city, departDate, returnDate !== "")) return true;
+};
+
+

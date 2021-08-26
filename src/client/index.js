@@ -1,7 +1,7 @@
-import { getData, postData, showDaysLeft } from './js/app';
-import './styles/main.scss';
+import { getData, postData, showDaysLeft, generateForm } from './js/app';
 import { generateEntry } from './js/formHandler';
 
+import './styles/main.scss';
 
 import image from './assets/img1.png';
 import image2 from './assets/img2.png';
@@ -19,5 +19,6 @@ export {
     getData,
     postData,
     showDaysLeft,
-    generateEntry
+    generateEntry,
+    generateForm
 }
