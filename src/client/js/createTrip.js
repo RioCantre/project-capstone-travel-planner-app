@@ -1,12 +1,18 @@
+import fetch from "node-fetch";
 
-export const updateUI = async (data) => {
-    let element = document.querySelector('travel-card');
+export async function updateUI(url) {
+    const response = await fetch(url);
 
-    let days = `${data.countdown > 1 ? "days" : "day"}`;
+    try {
+        const data = await response.json();
+        
+        let element = document.querySelector('travel-card');
+        
+        
 
     let innerHTML = ` <div id="travel-card">
                     <div id="city-img">
-                        <img src="${data.photo}" alt="Destination">
+                        <img src="${data.img}" alt="Destination">
                     </div>
                     <div id="destination-content">
                         <div id="destination-info">
@@ -20,7 +26,7 @@ export const updateUI = async (data) => {
                                 Departure: ${data.departing}
                             </div>
                             <div id="days-remaining">
-                                (in ${data.countdown} days away)
+                                (in ${data.daysLeft} days away)
                             </div>
                         </div>
                         <div id="forecast">
@@ -31,8 +37,8 @@ export const updateUI = async (data) => {
                                     </div>
                                     <div id="day-temp">
                                         <div class="day">Mon</div>
-                                        <span class="cel-temp">${data.currentMinTemp}&#8451 </span>|
-                                        <span class="fah-temp"> ${data.currentMaxTemp}&#8451</span>
+                                        <span class="cel-temp">${data.mintemp}&#8451 </span>|
+                                        <span class="fah-temp"> ${data.maxTemp}&#8451</span>
                                     </div>
                                 </li>
                             </ul>
@@ -43,8 +49,10 @@ export const updateUI = async (data) => {
                     </div>
                 </div> `;
     
-      element.innerHTML = innerHTML;
-
+        element.innerHTML = innerHTML;
+    } catch (error) {
+        console.log('error', error)
+    }
 }
 
 export async function removeEntry(entry, id) {

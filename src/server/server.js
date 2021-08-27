@@ -1,8 +1,7 @@
 var path = require('path')
-global.fetch = require('node-fetch')
+const fetch = require('node-fetch')
 const express = require('express')
 const cors = require('cors');
-const dataAPI = require('./dataAPI.js');
 const app = express()
 require('dotenv').config();
 
@@ -13,17 +12,26 @@ app.use(cors());
 
 console.log(__dirname)
 
+projectData = {};
+
+app.get('/',  (req, res) => {
+    res.sendFile('dist/index.html');
+})
+
+app.get("/all", (req, res) => {
+  res.send(projectData);
+  console.log(projectData);
+});
+
 // Post data
-app.post('/addEntry', async (req, res) => {
-    try {
-        const trip = req.body.input;
-        const response = await dataAPI(trip);
-        const data = await response.json();
-        res.send(data)
-    } catch (error) {
-        console.log("error", error);
-        return error;
-    }
+app.post('/addEntry',(req, res) => {
+  projectData.city = req.body.city;
+  projectData.date = req.body.date;
+  projectData.days = req.body.days;
+  projectData.daysLeft = re.body.daysLeft;
+
+  console.log(projectData);
+  res.send('ok');
 });
 
 // Delete trip entry from the server

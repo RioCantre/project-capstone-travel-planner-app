@@ -1,4 +1,5 @@
-import { showDaysLeft } from "./app";
+import { postData, postLocation, postPhoto, postWeather, generateForm } from './app';
+import { updateUI , removeEntry} from './createTrip';
 
 
 
@@ -11,23 +12,28 @@ export async function generateEntry(event) {
     let returnDate = document.getElementById('return-date').value;
 
 
-    
 
-       
+    if (generateForm(city, departDate, returnDate)) {
+        
+        let daysLeft = (Date.now(), departDate);
 
-    let daysLeft = showDaysLeft(Date.now(), departDate);
+          await postData('http://localhost:5000/addEntry', {
+              location: city,
+              date: departDate,
+              daysLeft: daysLeft
 
+        });
 
-    departing = reformatDate(departDate);
-    returning = reformatDate(returnDate);
-    countdown = daysLeft;
-    length = getDaysLeft(returnDate, departDate);
-    id = Date.now();
+         
+        await postLocation('http://localhost:5000/location');
+        await postWeather('http://localhost:5000/weather');
+        await postPhoto('http://localhost:5000/image');
+        await updateUI('http://localhost:5000/all');
+        await removeEntry('http://localhost:5000/all');
 
-    updateUI();
-    removeEntry();
+    } else {
+        alert('Details are required to proceed.');
+        return false;
+    }
 
-}
-
-
-
+};
