@@ -1,5 +1,5 @@
 var path = require('path')
-
+global.fetch = require('node-fetch')
 const express = require('express')
 const cors = require('cors');
 const dataAPI = require('./dataAPI.js');
@@ -11,21 +11,15 @@ app.use(express.json());
 app.use(express.static('dist'))
 app.use(cors());
 
-
 console.log(__dirname)
-let projectData = {};
- 
-// GET route
-app.get('/',  (req, res) => {
-    res.sendFile('dist/index.html');
-})
 
 // Post data
 app.post('/addEntry', async (req, res) => {
     try {
-        const trip = encodeURI(req.body.input);
+        const trip = req.body.input;
         const response = await dataAPI(trip);
-        res.send(response)
+        const data = await response.json();
+        res.send(data)
     } catch (error) {
         console.log("error", error);
         return error;

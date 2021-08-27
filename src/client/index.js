@@ -1,5 +1,6 @@
-import { postData, showDaysLeft, generateForm } from './js/app';
-import { generateEntry } from './js/formHandler';
+import { getData, postData, showDaysLeft } from './js/app';
+import { generateEntry} from './js/formHandler';
+import { updateUI } from './js/createTrip';
 
 import './styles/main.scss';
 
@@ -16,8 +17,9 @@ img2.src = image2;
 img3.src = image3;
 
 export {
+    getData,
     postData,
     showDaysLeft,
     generateEntry,
-    generateForm
+    updateUI
 }

@@ -19,7 +19,7 @@
             <div id="travel-detail">
                 <h1>Adventuristic</h1>
                 <h3>Plan your next adventure</h3>
-                <form id="form" onsubmit="return Client.generateForm(event)">
+                <form id="form" onsubmit="return Client.generateEntry(event)">
                     <div id="city-from">
                         <input type="text" class="city-from" placeholder="From...">
                     </div>
@@ -32,7 +32,7 @@
                         <input placeholder="Return date" class="form-control" type="text" onfocus="(this.type='date')"
                             id="return-date">
                     </div>
-                    <button type="submit" id="generate" onclick="return Client.generateForm(event)"> Search </button>
+                    <button type="submit" id="generate" onsubmit="return Client.generateEntry(event)"> Search </button>
                 </form>
             </div>
             <div id="main-img">
@@ -42,46 +42,11 @@
 
         <div id="container">
             <h4>Your current list</h4>
-            <div id="city-list">
+            <div id="list" class="trip">
 
-                <!-- <div id="travel-card">
-                    <div id="city-img">
-                        <img src="" alt="">
-                    </div>
-                    <div id="destination-content">
-                        <div id="destination-info">
-                            <div id="city">
-                                Barcelona
-                            </div>
-                            <div id="country">
-                                Spain
-                            </div>
-                            <div id="date-depature">
-                                Departure: 12/12/12
-                            </div>
-                            <div id="days-remaining">
-                                (in 22 days away)
-                            </div>
-                        </div>
-                        <div id="forecast">
-                            <ul>
-                                <li>
-                                    <div id="icon">
-                                        <img src="" alt="">
-                                    </div>
-                                    <div id="day-temp">
-                                        <div class="day">Mon</div>
-                                        <span class="cel-temp">9℃ </span>|
-                                        <span class="fah-temp"> 30℉</span>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <button id="remove-button">
-                            Remove this trip
-                        </button>
-                    </div>
-                </div> -->
+               <div id="travel-card">
+           
+                </div> 
                 
             </div>
             <div id="img-display">
