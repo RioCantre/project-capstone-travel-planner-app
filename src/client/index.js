@@ -1,6 +1,7 @@
-import { postData, showDaysLeft,  generateForm } from './js/app';
+import { postData, generateForm, postLocation, postWeather, postPhoto , showDaysLeft} from './js/app';
 import { generateEntry } from './js/formHandler';
 import { updateUI } from './js/createTrip';
+
 
 
 document.getElementById('generate').addEventListener('click', generateEntry);
@@ -24,5 +25,8 @@ export {
     showDaysLeft,
     generateEntry,
     updateUI,
-    generateForm
+    generateForm,
+    postLocation,
+    postWeather,
+    postPhoto
 }

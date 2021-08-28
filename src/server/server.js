@@ -86,7 +86,7 @@ function addWeather(req, res) {
 }
 
 function addPhoto(req, res) {
-  const url = `${pixURL}q=${city}&image_type=photo`;
+  const url = `${pixURL}q=${city}&image_type=photo&orientation=horizontal&category=travel&order=popular&per_page=3&pretty=true`;
   postData(url).then((response) => {
     projectData.img = response.hits[0].webformatURL;
     res.send(true);
