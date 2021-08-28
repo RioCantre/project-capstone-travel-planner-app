@@ -1,4 +1,6 @@
-import fetch from "node-fetch";
+
+
+let element = document.querySelector('travel-card');
 
 export async function updateUI(url) {
     const response = await fetch(url);
@@ -6,7 +8,6 @@ export async function updateUI(url) {
     try {
         const data = await response.json();
         
-        let element = document.querySelector('travel-card');
         
         
 
@@ -17,10 +18,10 @@ export async function updateUI(url) {
                     <div id="destination-content">
                         <div id="destination-info">
                             <div id="city">
-                                ${data.city}
+                                ${data.name}
                             </div>
                             <div id="country">
-                                ${data.country}
+                                ${data.countryName}
                             </div>
                             <div id="date-depature">
                                 Departure: ${data.departing}
@@ -33,34 +34,28 @@ export async function updateUI(url) {
                             <ul>
                                 <li>
                                     <div id="icon">
-                                        <img src=""https://www.weatherbit.io/static/img/icons/${data.icon}.png" alt="weather icon">
+                                        <img src=""https://www.weatherbit.io/static/img/icons/${data.weather.icon}.png" alt="weather icon">
                                     </div>
                                     <div id="day-temp">
                                         <div class="day">Mon</div>
-                                        <span class="cel-temp">${data.mintemp}&#8451 </span>|
-                                        <span class="fah-temp"> ${data.maxTemp}&#8451</span>
+                                        <span class="cel-temp">${Math.round(data.min_temp)} </span>|
+                                        <span class="fah-temp"> ${Math.round(data.maxTemp)}</span>
                                     </div>
                                 </li>
                             </ul>
                         </div>
-                        <button id="remove-button${data.id}">
+                        <button id="remove-button" onclick="removeEntry()" type="submit">
                             Remove this trip
                         </button>
                     </div>
                 </div> `;
     
         element.innerHTML = innerHTML;
+
+        function removeEntry() {
+            element.style.display = "none";
+        }
     } catch (error) {
         console.log('error', error)
     }
-}
-
-export async function removeEntry(entry, id) {
-    let removeBtn = document.getElementById(`remove-button${id}`);
-    let form = document.getElementById('form');
- 
-    removeBtn.addEventListener('click', () => {
-        removeEntry(entry, id);
-        form.reset();
-    });
 }
