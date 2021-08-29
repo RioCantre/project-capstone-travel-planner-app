@@ -26,9 +26,9 @@ app.get("/all", (req, res) => {
 
 // Post data
 app.post('/addEntry',(req, res) => {
-  projectData.city = req.body.name;
+  projectData.city = req.body.city;
   projectData.date = req.body.date;
-  projectData.daysLeft = re.body.daysLeft;
+  projectData.daysLeft = req.body.daysLeft;
 
   console.log(projectData);
   res.send('ok');
@@ -55,8 +55,8 @@ function addLocation(req, res) {
   postData(url)
     .then((response) => {
       console.log(response.geonames[0]);
-      projectData.name = response.geonames[0].city;
-      projectData.countryName = response.geonames[0].country;
+      projectData.city = response.geonames[0].name;
+      projectData.country = response.geonames[0].countryName;
       projectData.lat = response.geonames[0].lat;
       projectData.lng = response.geoname[0].lng;
       res.send(true);
