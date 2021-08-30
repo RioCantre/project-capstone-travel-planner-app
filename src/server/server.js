@@ -2,7 +2,6 @@ var path = require('path')
 const fetch = require("node-fetch");
 const express = require('express')
 const cors = require('cors');
-const { REPL_MODE_SLOPPY } = require('repl');
 const app = express()
 require('dotenv').config();
 
@@ -62,9 +61,20 @@ app.post('/addLocation', async (req, res) => {
 app.post('/addWeather', async (req, res) => {
     const url = `${weatherBitURL}lat=${projectData.lat}&lon=${projectData.lon}&key=${api_key}`;
     getData(url).then((response) => {
+        projectData.date = response.data[0].valid_date;
         projectData.icon = response.data[0].weather.icon;
         projectData.min_temp = Math.floor(response.data[0].min_temp);
         projectData.max_temp = Math.floor(response.data[0].max_temp);
+
+        projectData.date2 = response.data[1].valid_date;
+        projectData.icon2 = response.data[1].weather.icon;
+        projectData.min_temp2 = Math.floor(response.data[1].min_temp);
+        projectData.max_temp2 = Math.floor(response.data[1].max_temp);
+
+        projectData.date3 = response.data[2].valid_date;
+        projectData.icon3 = response.data[2].weather.icon;
+        projectData.min_temp3 = Math.floor(response.data[2].min_temp);
+        projectData.max_temp3 = Math.floor(response.data[2].max_temp);
         res.send(response);
     })
 });
@@ -91,7 +101,7 @@ const getData = async (url) => {
 
 app.post('/delete', (req, res) => {
   let { id } = req.body;
-  projectData = projectData.filter((trip) => trip.id !== id);
+  projectData = projectData.remove((trip) => trip.id !== id);
 });
 
 // designates what port the app will listen to for incoming requests

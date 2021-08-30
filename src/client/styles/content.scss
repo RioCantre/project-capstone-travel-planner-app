@@ -44,7 +44,8 @@
                 font-size: 14px;
             }
             #forecast {
-                padding: 50px 10px;
+                padding: 30px 10px;
+                padding-bottom: 10px;
                 ul {
                     margin: 0;
                     padding-left: 0;
@@ -53,8 +54,10 @@
                         justify-content: center;
                         list-style: none;
                         margin: 0;
+                        padding-bottom: 20px;
                         
                         #day-temp {
+                            width: 100px;
                             text-align: center;
                             .cel-temp,
                             .fah-temp {
@@ -64,7 +67,7 @@
                         
                         #icon img {
                             width: 50px;
-                            margin-right: 20px;
+                            margin-right: 30px;
                         }
                     }
                 }
