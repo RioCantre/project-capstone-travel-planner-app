@@ -36,8 +36,8 @@ app.post('/addEntry',(req, res) => {
 const geoNamesURL = 'http://api.geonames.org/searchJSON?q=';
 const username = `&username=${process.env.GeoUsername}`;
 
-const weatherBitURL = 'https://api.weatherbit.io/v2.0/forecast/daily?&&city=';
-const api_key =`&maxRows=1&username=${process.env.WbKey}`;
+const weatherBitURL = 'https://api.weatherbit.io/v2.0/forecast/daily?';
+const api_key =`${process.env.WbKey}`;
 
 const pixURL = `https://pixabay.com/api/?key=${process.env.PixKey}`;
 
@@ -47,11 +47,10 @@ app.post('/addLocation', async (req, res) => {
     const url = `$${geoNamesURL}${projectData.city}${username}`;
     getData(url)
         .then((response) => {
-        //  Data from Genames[0];
-        projectData.city = response.geonames[0].name;
-        projectData.countryName = response.geonames[0].countryName;
-        projectData.lat = response.geonames[0].lat;
-        projectData.long = response.geonames[0].lng;
+        projectData.city = response.name;
+        projectData.countryName = response.countryName;
+        projectData.lat = response.lat;
+        projectData.long = response.lng;
 
         console.log(`ProjectData is, ${JSON.stringify(projectData, null, 2)}`);
         res.send(true);
@@ -60,24 +59,15 @@ app.post('/addLocation', async (req, res) => {
       res.send(JSON.stringify({ error: error }));
     });
 })
-app.post('/addWeather', async (req, res) => {
-    const url = `${weatherBitURL}${projectData.city}&key=${api_key}`;
-    getData(url).then((response) => {
-    console.log("Data from weatherBit");
-    const weatherData = response.data;
 
-    weatherData.forEach((data) => {
-      if (data.valid_date === projectData.departDate) {
-        projectData.icon = data.icon;
-        projectData.min_temp = data.min_temp;
-        projectData.max_temp = data.max_temp;
-        res.send(true);
-      } else return;
-    });
-  })
-  .catch((error) => {
-      res.send(JSON.stringify({ error: error }));
-    });
+app.post('/addWeather', async (req, res) => {
+    const url = `${weatherBitURL}lat=${projectData.lat}&lon=${projectData.long}&key=${api_key}`;
+    getData(url).then((response) => {
+        projectData.icon = response.icon;
+        projectData.min_temp = response.min_temp;
+        projectData.max_temp = response.max_temp;
+        res.send(projectData);
+    })
 });
 
 app.post('/addPhoto', async (req, res) => {
@@ -86,9 +76,6 @@ app.post('/addPhoto', async (req, res) => {
         projectData.img = response.hits[0].webformatURL;
         res.send(true);
     })
-    .catch((error) => {
-      res.send(JSON.stringify({ error: error }));
-    });
 });
 
 const getData = async (url) => {

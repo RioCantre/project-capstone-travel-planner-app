@@ -32,7 +32,7 @@ export async function updateUI(url) {
                                 <ul>
                                     <li>
                                         <div id="icon">
-                                            <img src=""https://www.weatherbit.io/static/img/icons/${data.weather.icon}.png" alt="weather icon">
+                                            <img src=""https://www.weatherbit.io/static/img/icons/${data.icon}.png" alt="weather icon">
                                         </div>
                                         <div id="day-temp">
                                             <div class="day">Mon</div>
