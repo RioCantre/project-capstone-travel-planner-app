@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+
 import { generateEntry } from './formHandler';
 
 let element = document.querySelector('travel-card');

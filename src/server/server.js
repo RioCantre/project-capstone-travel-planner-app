@@ -13,8 +13,6 @@ app.use(cors());
 
 console.log(__dirname)
 
-projectData = {};
-
 app.get('/',  (req, res) => {
     res.sendFile('dist/index.html');
 })
@@ -31,9 +29,10 @@ app.post('/addEntry',(req, res) => {
   projectData.daysLeft = req.body.daysLeft;
 
   console.log(projectData);
-  res.send('ok');
+  res.send(projectData);
 });
 
+// API url and keys 
 const geoNamesURL = 'http://api.geonames.org/searchJSON?q=';
 const username = `&username=${process.env.GeoUsername}`;
 
@@ -45,12 +44,12 @@ const pixURL = `https://pixabay.com/api/?key=${process.env.PixKey}`;
 projectData = {};
 
 app.post('/addLocation', async (req, res) => {
-    const url = `$${geoNamesURL}${city}${username}`;
+    const url = `$${geoNamesURL}${projectData.city}${username}`;
     getData(url)
         .then((response) => {
         //  Data from Genames[0];
         projectData.city = response.geonames[0].name;
-        projectData.country = response.geonames[0].countryName;
+        projectData.countryName = response.geonames[0].countryName;
         projectData.lat = response.geonames[0].lat;
         projectData.long = response.geonames[0].lng;
 
@@ -62,27 +61,33 @@ app.post('/addLocation', async (req, res) => {
     });
 })
 app.post('/addWeather', async (req, res) => {
-    const url = `${weatherBitURL}${city}&key=${api_key}`;
-     getData(url).then((response) => {
+    const url = `${weatherBitURL}${projectData.city}&key=${api_key}`;
+    getData(url).then((response) => {
     console.log("Data from weatherBit");
     const weatherData = response.data;
 
     weatherData.forEach((data) => {
-      if (data.valid_date === projectData.departtDate) {
+      if (data.valid_date === projectData.departDate) {
         projectData.icon = data.icon;
         projectData.min_temp = data.min_temp;
         projectData.max_temp = data.max_temp;
         res.send(true);
       } else return;
     });
-  });
+  })
+  .catch((error) => {
+      res.send(JSON.stringify({ error: error }));
+    });
 });
 
 app.post('/addPhoto', async (req, res) => {
-    const url = `${pixURL}q=${city}&image_type=photo&orientation=horizontal&category=travel&order=popular&per_page=3&pretty=true`;
+    const url = `${pixURL}q=${projectData.city}&image_type=photo&orientation=horizontal&category=travel&order=popular&per_page=3&pretty=true`;
     getData(url).then((response) => {
         projectData.img = response.hits[0].webformatURL;
         res.send(true);
+    })
+    .catch((error) => {
+      res.send(JSON.stringify({ error: error }));
     });
 });
 
