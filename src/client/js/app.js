@@ -1,86 +1,37 @@
 
 export const postData = async (url = "", data = {}) => {
-  const response = await fetch('http://localhost:5000/addEntry', {
+  const res = await fetch(url, {
     method: "POST",
     credentials: "same-origin",
     headers: {
       "Content-Type": "application/json",
     },
-    // Body data type must match "Content-Type" header
     body: JSON.stringify(data),
   });
   try {
-    const newData = await response.json();
-    console.log(newData);
-    return newData;
-  } catch (error) {
-    console.log("error", error);
+    const getData = await res.json();
+    return getData;
+  } catch (err) {
+    console.log("Error:", err);
   }
 };
-export const postLocation = async (url = "", data = {}) => {
-  const response = await fetch('http://localhost:5000/location', {
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // Body data type must match "Content-Type" header
-    body: JSON.stringify(data),
-  });
+ 
+export const getData = async (url) => {
+  const response = await fetch(url);
   try {
-    const newData = await response.json();
-    console.log(newData);
-    return newData;
-  } catch (error) {
-    console.log("error", error);
-  }
-};
-export const postWeather = async (url = "", data = {}) => {
-  const response = await fetch('http://localhost:5000/weather', {
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // Body data type must match "Content-Type" header
-    body: JSON.stringify(data),
-  });
-  try {
-    const newData = await response.json();
-    console.log(newData);
-    return newData;
-  } catch (error) {
-    console.log("error", error);
-  }
-};
-export const postPhoto = async (url = "", data = {}) => {
-  const response = await fetch('http://localhost:5000/photo', {
-    method: "POST",
-    credentials: "same-origin",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // Body data type must match "Content-Type" header
-    body: JSON.stringify(data),
-  });
-  try {
-    const newData = await response.json();
-    console.log(newData);
-    return newData;
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
     console.log("error", error);
   }
 };
 
 
-export const showDaysLeft = (currentDate, departDate) => {
+export const showDaysLeft = (returnDate, departDate) => {
   return Math.ceil(
-    Math.abs(new Date(departDate) - new Date(currentDate)) /
+    Math.abs(new Date(departDate) - new Date(returnDate)) /
       (1000 * 60 * 60 * 24)
   );
-};
-
-export const generateForm = ( city, departDate, returnDate) => {
-  if (( city, departDate, returnDate !== "")) return true;
 };
 

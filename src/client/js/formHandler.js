@@ -1,35 +1,30 @@
-import { postData, generateForm, postLocation, postWeather, postPhoto, showDaysLeft } from './app';
+import { postData, showDaysLeft, getData } from './app';
 import { updateUI } from './createTrip';
 
 
-export async function generateEntry(e) {
-    e.preventDefault();
+export async function generateEntry(event) {
+    event.preventDefault()
+
+    let start = document.getElementById('start').value;
     let city = document.getElementById('destination').value;
     let departDate = document.getElementById('depart-date').value;
     let returnDate = document.getElementById('return-date').value;
 
 
 
-    if (generateForm(city, departDate, returnDate)) {
+
         
-        let daysLeft = showDaysLeft(Date.now(), departDate);
+    let daysLeft = showDaysLeft(Date.now(), departDate);
 
-        postData('http://localhost:5000/addEntry', {
-              location: city,
-              date: departDate,
-              daysLeft: daysLeft
+    await postData('http://localhost:5000/addEntry', {
+        city: city,
+        date: departDate,
+        daysLeft: daysLeft
 
-            })
-                .then((data) => {
-                    postLocation('http://localhost:5000/location');
-                    postWeather('http://localhost:5000/weather');
-                    postPhoto('http://localhost:5000/photo');
-                    updateUI(data);
-                });
+    })
+    await getData('http://localhost:5000/addLocation')
+    await getData('http://localhost:5000/addWeather')
+    await getData('http://localhost:5000/addPhoto')
+    await updateUI('http://localhost:5000/all');
 
-    } else {
-        alert('Details are required to proceed.');
-        return false;
-    }
-
-};
+}

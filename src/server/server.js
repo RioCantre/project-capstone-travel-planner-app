@@ -1,5 +1,5 @@
 var path = require('path')
-global.fetch = require('node-fetch')
+const fetch = require("node-fetch");
 const express = require('express')
 const cors = require('cors');
 const app = express()
@@ -44,60 +44,70 @@ const pixURL = `https://pixabay.com/api/?key=${process.env.PixKey}`;
 
 projectData = {};
 
-app.post('/location', addLocation)
-app.post('/weather', addWeather)
-app.post('/photo', addPhoto)
+app.post('/addLocation', async (req, res) => {
+    const url = `$${geoNamesURL}${city}${username}`;
+    getData(url)
+        .then((response) => {
+        //  Data from Genames[0];
+        projectData.city = response.geonames[0].name;
+        projectData.country = response.geonames[0].countryName;
+        projectData.lat = response.geonames[0].lat;
+        projectData.long = response.geonames[0].lng;
 
-
-function addLocation(req, res) {
-  const url = `$${geoNamesURL}${city}${username}`;
-  console.log(url);
-  postData(url)
-    .then((response) => {
-      console.log(response.geonames[0]);
-      projectData.city = response.geonames[0].name;
-      projectData.country = response.geonames[0].countryName;
-      projectData.lat = response.geonames[0].lat;
-      projectData.lng = response.geoname[0].lng;
-      res.send(true);
+        console.log(`ProjectData is, ${JSON.stringify(projectData, null, 2)}`);
+        res.send(true);
     })
     .catch((error) => {
       res.send(JSON.stringify({ error: error }));
-    })
-}
-
-function addWeather(req, res) {
-  const url = `${weatherBitURL}${city}&key=${api_key}`;
-  console.log(url);
-  postData(url)
-    .then((response) => {
-      const weatherData = response.data;
-
-      weatherData.forEach((data) => {
-        if (data.date === projectData.departDate) {
-          projectData.icon = data.weatherBitURL.icon;
-          projectData.min_temp = data.min_temp;
-          projectData.max_temp = data.max_temp;
-          res.send(true);
-        } else return;
-      });
- 
     });
-}
+})
+app.post('/addWeather', async (req, res) => {
+    const url = `${weatherBitURL}${city}&key=${api_key}`;
+     getData(url).then((response) => {
+    console.log("Data from weatherBit");
+    const weatherData = response.data;
 
-function addPhoto(req, res) {
-  const url = `${pixURL}q=${city}&image_type=photo&orientation=horizontal&category=travel&order=popular&per_page=3&pretty=true`;
-  postData(url).then((response) => {
-    projectData.img = response.hits[0].webformatURL;
-    res.send(true);
-  })
-}
+    weatherData.forEach((data) => {
+      if (data.valid_date === projectData.departtDate) {
+        projectData.icon = data.icon;
+        projectData.min_temp = data.min_temp;
+        projectData.max_temp = data.max_temp;
+        res.send(true);
+      } else return;
+    });
+  });
+});
 
+app.post('/addPhoto', async (req, res) => {
+    const url = `${pixURL}q=${city}&image_type=photo&orientation=horizontal&category=travel&order=popular&per_page=3&pretty=true`;
+    getData(url).then((response) => {
+        projectData.img = response.hits[0].webformatURL;
+        res.send(true);
+    });
+});
+
+const getData = async (url) => {
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log("error", error);
+    return error;
+  }
+};
+
+app.post('/delete', (req, res) => {
+  let { id } = req.body;
+  projectData = projectData.filter((trip) => trip.id !== id);
+});
 
 // designates what port the app will listen to for incoming requests
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
- console.log('app listening on port 5000!')
+    console.log(`server is running on localhost: ${port}`)
 })
 
+module.exports = app;
 

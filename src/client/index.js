@@ -1,4 +1,4 @@
-import { postData, generateForm, postLocation, postWeather, postPhoto , showDaysLeft} from './js/app';
+import { postData, showDaysLeft, getData} from './js/app';
 import { generateEntry } from './js/formHandler';
 import { updateUI } from './js/createTrip';
 
@@ -25,8 +25,6 @@ export {
     showDaysLeft,
     generateEntry,
     updateUI,
-    generateForm,
-    postLocation,
-    postWeather,
-    postPhoto
+    getData
+
 }
