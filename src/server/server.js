@@ -34,10 +34,10 @@ app.post('/addEntry',(req, res) => {
 });
 
 // API url and keys 
-const geoNamesURL = 'http://api.geonames.org/searchJSON?q=';
+const geoNamesURL = `http://api.geonames.org/searchJSON?q=`;
 const username = `&username=${process.env.GeoUsername}`;
 
-const weatherBitURL = 'https://api.weatherbit.io/v2.0/forecast/daily?';
+const weatherBitURL = `https://api.weatherbit.io/v2.0/forecast/daily?`;
 const api_key =`${process.env.WbKey}`;
 
 const pixURL = `https://pixabay.com/api/?key=${process.env.PixKey}`;
@@ -45,13 +45,13 @@ const pixURL = `https://pixabay.com/api/?key=${process.env.PixKey}`;
 projectData = {};
 
 app.post('/addLocation', async (req, res) => {
-    const url = `$${geoNamesURL}${projectData.city}${username}`;
+    const url = `${geoNamesURL}${projectData.city}${username}`;
     getData(url)
         .then((response) => {
         projectData.city = response.geonames[0].name;
-        projectData.countryName = response.geonames[0].countryName;
+        projectData.country = response.geonames[0].countryName;
         projectData.lat = response.geonames[0].lat;
-        projectData.long = response.geonames[0].lng;
+        projectData.lon = response.geonames[0].lng;
         res.send(response);
     })
     .catch((error) => {
@@ -60,19 +60,17 @@ app.post('/addLocation', async (req, res) => {
 })
 
 app.post('/addWeather', async (req, res) => {
-    const url = `${weatherBitURL}lat=${projectData.lat}&lon=${projectData.long}&key=${api_key}`;
+    const url = `${weatherBitURL}lat=${projectData.lat}&lon=${projectData.lon}&key=${api_key}`;
     getData(url).then((response) => {
-        projectData.icon = response.icon;
-        projectData.lat = response.lat;
-        projectData.long = response.lng;
-        projectData.min_temp = response.min_temp;
-        projectData.max_temp = response.max_temp;
+        projectData.icon = response.data[0].weather.icon;
+        projectData.min_temp = Math.floor(response.data[0].min_temp);
+        projectData.max_temp = Math.floor(response.data[0].max_temp);
         res.send(response);
     })
 });
 
 app.post('/addPhoto', async (req, res) => {
-    const url = `${pixURL}q=${projectData.city}&image_type=photo&orientation=horizontal&category=travel&order=popular&per_page=3&pretty=true`;
+    const url = `${pixURL}&q=${projectData.city}&image_type=photo&orientation=vertical&category=places&order=popular&per_page=3&pretty=true`;
     getData(url).then((response) => {
         projectData.img = response.hits[0].webformatURL; 
         res.send(response);

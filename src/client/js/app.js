@@ -4,7 +4,7 @@ export const postData = async (url = "", data = {}) => {
     method: "POST",
     credentials: "same-origin",
     headers: {
-      "Content-Type": "application/json",
+      'Content-Type': 'application/json; charset=UTF-8',
     },
     body: JSON.stringify(data),
   });
