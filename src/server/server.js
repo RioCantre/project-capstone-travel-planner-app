@@ -2,6 +2,7 @@ var path = require('path')
 const fetch = require("node-fetch");
 const express = require('express')
 const cors = require('cors');
+const { REPL_MODE_SLOPPY } = require('repl');
 const app = express()
 require('dotenv').config();
 
@@ -47,13 +48,11 @@ app.post('/addLocation', async (req, res) => {
     const url = `$${geoNamesURL}${projectData.city}${username}`;
     getData(url)
         .then((response) => {
-        projectData.city = response.name;
-        projectData.countryName = response.countryName;
-        projectData.lat = response.lat;
-        projectData.long = response.lng;
-
-        console.log(`ProjectData is, ${JSON.stringify(projectData, null, 2)}`);
-        res.send(true);
+        projectData.city = response.geonames[0].name;
+        projectData.countryName = response.geonames[0].countryName;
+        projectData.lat = response.geonames[0].lat;
+        projectData.long = response.geonames[0].lng;
+        res.send(response);
     })
     .catch((error) => {
       res.send(JSON.stringify({ error: error }));
@@ -64,17 +63,19 @@ app.post('/addWeather', async (req, res) => {
     const url = `${weatherBitURL}lat=${projectData.lat}&lon=${projectData.long}&key=${api_key}`;
     getData(url).then((response) => {
         projectData.icon = response.icon;
+        projectData.lat = response.lat;
+        projectData.long = response.lng;
         projectData.min_temp = response.min_temp;
         projectData.max_temp = response.max_temp;
-        res.send(projectData);
+        res.send(response);
     })
 });
 
 app.post('/addPhoto', async (req, res) => {
     const url = `${pixURL}q=${projectData.city}&image_type=photo&orientation=horizontal&category=travel&order=popular&per_page=3&pretty=true`;
     getData(url).then((response) => {
-        projectData.img = response.hits[0].webformatURL;
-        res.send(true);
+        projectData.img = response.hits[0].webformatURL; 
+        res.send(response);
     })
 });
 
