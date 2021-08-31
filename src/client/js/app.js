@@ -17,11 +17,7 @@ export const postData = async (url = "", data = {}) => {
 };
  
 
-
-export const showDaysLeft = (returnDate, departDate) => {
-  return Math.ceil(
-    Math.abs(new Date(returnDate) - new Date(departDate)) /
-      (1000 * 60 * 60 * 24)
-  );
+export const generateForm = ( city, departDate, returnDate) => {
+  if (( city, departDate, returnDate !== "")) return true;
 };
 

@@ -1,4 +1,4 @@
-import { postData, showDaysLeft } from './js/app';
+import { postData, generateForm } from './js/app';
 import { generateEntry, updateUI } from './js/formHandler';
 
 document.getElementById('generate').addEventListener('click', generateEntry);
@@ -19,8 +19,8 @@ img3.src = image3;
 
 export {
     postData,
-    showDaysLeft,
     generateEntry,
-    updateUI
+    updateUI,
+    generateForm
 
 }
