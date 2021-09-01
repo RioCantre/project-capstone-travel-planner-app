@@ -100,7 +100,7 @@ const getData = async (url) => {
 };
 
 app.post('/delete', (req, res) => {
-  let { id } = req.body;
+  let {id}  = req.body;
   projectData = projectData.remove((trip) => trip.id !== id);
 });
 
