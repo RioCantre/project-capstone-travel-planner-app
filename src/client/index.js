@@ -1,4 +1,4 @@
-import { postData, generateForm } from './js/app';
+import { postData, generateForm, reformatDate } from './js/app';
 import { generateEntry, updateUI } from './js/formHandler';
 
 document.getElementById('generate').addEventListener('click', generateEntry);
@@ -21,6 +21,7 @@ export {
     postData,
     generateEntry,
     updateUI,
-    generateForm
+    generateForm,
+    reformatDate
 
 }

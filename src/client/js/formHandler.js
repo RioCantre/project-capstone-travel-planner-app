@@ -1,32 +1,35 @@
-import fetch from 'node-fetch';
-import { postData, generateForm } from './app';
+
+import { postData, generateForm, reformatDate} from './app';
 
 
 
 export async function generateEntry(event) {
     event.preventDefault()
 
-    const currentDate = new Date();
-    console.log(currentDate);
+
     const city = document.getElementById('destination').value;
     const departDate = document.getElementById('depart-date').value;
     const returnDate = document.getElementById('return-date').value;
+    console.log(departDate)
  
     if (generateForm(city, departDate, returnDate)) {
 
-        const startDate = new Date(departDate);
+        const tripDate = new Date(departDate);
         const endDate = new Date(returnDate);
-        const tripLength = endDate.getTime() - startDate.getTime();
+
+
+        const tripLength = endDate.getTime() - tripDate.getTime();
         const daysLeft = tripLength / (1000 * 3600 * 24);
+        console.log(tripDate)
 
         await postData('http://localhost:5000/addEntry', {
             city: city,
-            date: startDate,
+            tripDate: reformatDate(tripDate),
             daysLeft: daysLeft
 
         })
         await postData('http://localhost:5000/addLocation');
-        await postData('http://localhost:5000/addWeather');
+        await postData('http://localhost:5000/addWeather'); 
         await postData('http://localhost:5000/addPhoto');
         await updateUI('http://localhost:5000/all');
         // await removeEntry('http://localhost:5000/delete');
@@ -43,7 +46,7 @@ export const handleTrip = async (id) => {
 
     if (id === "") {
         deleteTrip.addEventListener('click', () => {
-            
+
         })
     }
 
@@ -69,7 +72,7 @@ export const updateUI = async (url) => {
                                     ${data.country}
                                 </div>
                                 <div id="date-depature">
-                                    Departure: ${data.startDate}
+                                    Departure: ${data.tripDate}
                                 </div>
                                 <div id="days-remaining">
                                     (in ${data.daysLeft} days away)

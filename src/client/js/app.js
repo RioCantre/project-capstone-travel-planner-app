@@ -15,9 +15,16 @@ export const postData = async (url = "", data = {}) => {
     console.log("Error:", err);
   }
 };
- 
+
 
 export const generateForm = ( city, departDate, returnDate) => {
   if (( city, departDate, returnDate !== "")) return true;
 };
+
+
+export const reformatDate = (departDate) => {
+  return departDate.toLocaleDateString('en-US');
+};
+
+
 
