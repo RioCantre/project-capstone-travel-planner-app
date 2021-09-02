@@ -99,10 +99,6 @@ const getData = async (url) => {
   }
 };
 
-// app.post('/delete', (req, res) => {
-//   let {id}  = req.body;
-//   projectData = projectData.remove((trip) => trip.id !== id);
-// });
 
 // designates what port the app will listen to for incoming requests
 const port = process.env.PORT || 5000;

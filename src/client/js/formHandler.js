@@ -2,9 +2,6 @@
 import { postData, generateForm, reformatDate } from './app';
 
 let travelList = document.querySelector('#city-list');
-let tripList = document.querySelector(".trip");
-
-
 
 export async function generateEntry(event) {
     event.preventDefault()
@@ -39,7 +36,6 @@ export async function generateEntry(event) {
         await updateUI('http://localhost:5000/all');
         await updateUI('http://localhost:5000/all');
         form.reset()
-        removeEntry();
         // newTrip(updateUI);
     }else {
         alert('Details are required to proceed.');
@@ -108,7 +104,7 @@ export const updateUI = async (url) => {
                                     </li>
                                 </ul>
                             </div id="remove-list" >
-                                <button class="remove-button" id="remove-button${data.id}"  type="submit">
+                                <button class="remove-button" onclick="document.getElementById('travel-card').style.display='none'"  type="submit">
                                     Remove this trip
                                 </button>
                         </div>
@@ -120,23 +116,6 @@ export const updateUI = async (url) => {
         console.log('error', error);
     }     
 
-}
-
-export const removeEntry = async (url) => {
-    const response = await fetch(url);
-    try {
-        const data = await response.json();
-
-        let deleteBtn = document.getElementById(`remove-button${data.id}`);
-
-        deleteBtn.addEventListener('click', () => {
-            let removeTrip = tripList.find((trip) => trip.id === id);
-            travelList.remove(removeTrip);
-
-        })
-    } catch (error) {
-        console.log('error', error);
-    } 
 }
 
 
