@@ -1,5 +1,9 @@
 
-import { postData, generateForm, reformatDate} from './app';
+import { postData, generateForm, reformatDate } from './app';
+
+let travelList = document.querySelector('#city-list');
+let tripList = document.querySelector(".trip");
+
 
 
 export async function generateEntry(event) {
@@ -17,8 +21,10 @@ export async function generateEntry(event) {
         const endDate = new Date(returnDate);
 
 
-        const tripLength = endDate.getTime() - tripDate.getTime();
-        const daysLeft = tripLength / (1000 * 3600 * 24);
+        const countdownDate = new Date(endDate).getTime();
+        const today = new Date().getTime();
+        const difference = countdownDate - today;
+        const daysLeft = Math.floor(difference / (1000 * 60 * 60 * 24));
         console.log(tripDate)
 
         await postData('http://localhost:5000/addEntry', {
@@ -32,9 +38,9 @@ export async function generateEntry(event) {
         await postData('http://localhost:5000/addPhoto');
         await updateUI('http://localhost:5000/all');
         await updateUI('http://localhost:5000/all');
-        // await removeEntry('http://localhost:5000/delete');
-
         form.reset()
+        removeEntry();
+        // newTrip(updateUI);
     }else {
         alert('Details are required to proceed.');
         return false;
@@ -43,8 +49,6 @@ export async function generateEntry(event) {
 }
 
 
-
-let travelList = document.querySelector('#city-list');
 
 export const updateUI = async (url) => {
     const response = await fetch(url);
@@ -118,6 +122,22 @@ export const updateUI = async (url) => {
 
 }
 
-// export const removeEntry = async (url)
+export const removeEntry = async (url) => {
+    const response = await fetch(url);
+    try {
+        const data = await response.json();
+
+        let deleteBtn = document.getElementById(`remove-button${data.id}`);
+
+        deleteBtn.addEventListener('click', () => {
+            let removeTrip = tripList.find((trip) => trip.id === id);
+            travelList.remove(removeTrip);
+
+        })
+    } catch (error) {
+        console.log('error', error);
+    } 
+}
+
 
     
