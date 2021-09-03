@@ -61,7 +61,12 @@
                             text-align: center;
                             .cel-temp,
                             .fah-temp {
-                                font-size: 13px;
+                                font-size: 16px;
+                            }
+                            #wind,
+                            #rain {
+                                font-size: 10px;
+                                padding: 2px;
                             }
                         }
                         

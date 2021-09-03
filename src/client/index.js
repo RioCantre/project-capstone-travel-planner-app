@@ -1,5 +1,6 @@
 import { postData, generateForm, reformatDate } from './js/app';
-import { generateEntry, updateUI } from './js/formHandler';
+import { generateEntry } from './js/formHandler';
+import { updateUI } from './js/createTrip';
 
 document.getElementById('generate').addEventListener('click', generateEntry);
 
@@ -23,5 +24,4 @@ export {
     updateUI,
     generateForm,
     reformatDate
-
 }
