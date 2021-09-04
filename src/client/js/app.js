@@ -1,3 +1,4 @@
+import { updateUI } from "./createTrip";
 
 export const postData = async (url = "", data = {}) => {
   const res = await fetch(url, {

@@ -3,6 +3,30 @@
     #base-content {
         display: flex;
         justify-content: center;
+        @media (min-width: 500px) and (max-width: 1173px) {
+            display: flex;
+            flex-direction: column-reverse;
+            width: 100%;
+            margin: auto;
+
+            #main-img img{
+                    width: 260px;
+                    margin:auto;
+                    display: block;
+                    margin-bottom: 30px;
+            }
+
+            #travel-detail {
+                h1 {
+                    font-size: 68px;
+                }
+                h3 {
+                    font-size: 25px;
+                }
+
+            }
+
+        }
     }
     
     #travel-detail{
