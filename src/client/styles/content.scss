@@ -1,12 +1,11 @@
 #container {
   background-color: $secondary-light;
   border-radius: 30px;
-    @media (min-width: 500px) and (max-width: 1173px) {
+    @media (max-width: 1173px) {
         width: 100%;
         display: block;
         margin: auto;
         border-radius: 0;
-
     }
     
     h4 {
@@ -25,6 +24,14 @@
             padding: 30px;
             border-radius: 20px;
             margin: auto;
+            @media(max-width:600px) {
+                width: 500px;
+                @media(max-width: 510px) {
+                    display: block;
+                    width: 100%;
+                    border-radius: 0;
+                }
+            }
             
             
         }
@@ -34,11 +41,24 @@
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
             height: 100%;
+            @media(max-width:600px) {
+                width: 220px;
+                margin-right: 20px;
+                @media(max-width: 510px) {
+                    display: block;
+                    width: 100%;
+                    border-radius: 0;
+                    height: 400px;
+                    margin-bottom: 20px;
+                }
+            }
         }
         
         #destination-content{
             color: $font-color-light;
-            
+            @media(max-width: 510px) {
+                text-align: center;
+            }
             #city {
                 font-size: 24px;
             }
@@ -97,6 +117,9 @@
                     color:$font-color-light;
                     cursor: pointer;
                 }
+                @media(max-width: 510px) {
+                    width: 100%;
+                }
             }
         }
     }
@@ -105,8 +128,8 @@
         width: 700px;
         margin: auto;
         display: block;
-        @media (min-width: 500px) and (max-width: 1173px){
-            width: 600px;
+        @media (max-width: 1173px){
+            width: 100%;
         }
     }
 }

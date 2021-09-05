@@ -9,7 +9,7 @@ body {
     width: 1200px;
     display: block;
     margin: auto;
-    @media (min-width: 500px) and (max-width: 1173px) {
+    @media(max-width: 1173px) {
         width: 100%;
     }
     
@@ -20,11 +20,7 @@ header {
     nav {
         display: flex;
         justify-content: flex-end;
-        @media(max-width: 1173px) {
-            display: flex;
-            justify-content: flex-end;
-
-        }
+        
         a {
             text-decoration: none;
             padding: 30px;
