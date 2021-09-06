@@ -24,7 +24,7 @@
             padding: 30px;
             border-radius: 20px;
             margin: auto;
-            @media(max-width:600px) {
+            @media(max-width:653px) {
                 width: 500px;
                 @media(max-width: 510px) {
                     display: block;
@@ -41,7 +41,7 @@
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
             height: 100%;
-            @media(max-width:600px) {
+            @media(max-width:653px) {
                 width: 220px;
                 margin-right: 20px;
                 @media(max-width: 510px) {
@@ -129,7 +129,10 @@
         margin: auto;
         display: block;
         @media (max-width: 1173px){
-            width: 100%;
+            width: 650px;
+            @media(max-width:653px) {
+                width: 100%;
+            }
         }
     }
 }

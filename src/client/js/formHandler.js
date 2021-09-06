@@ -28,13 +28,13 @@ export async function generateEntry(event) {
             tripDate: reformatDate(tripDate),
             daysLeft: daysLeft
             
-        })
+        });
         await postData('http://localhost:5000/addLocation');
         await postData('http://localhost:5000/addWeather'); 
         await postData('http://localhost:5000/addPhoto');
         await updateUI('http://localhost:5000/all');
-        form.reset()
-    }else {
+        form.reset();
+    } else {
         alert('Details are required to proceed.');
         return false;
     }
