@@ -4,7 +4,7 @@
   "description": "Adventuristic: A travel planner app",
   "main": "main.js",
   "scripts": {
-    "test": "jest --env=jsdom",
+    "test": "jest --env=jsdom --no-cache --verbose",
     "start": "node src/server/main.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack serve  --config webpack.dev.js ",
