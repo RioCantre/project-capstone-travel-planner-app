@@ -1,11 +1,16 @@
 #container {
   background-color: $secondary-light;
   border-radius: 30px;
-
-  
-  h4 {
-      text-align: center;
-      padding: 30px;
+    @media (max-width: 1173px) {
+        width: 100%;
+        display: block;
+        margin: auto;
+        border-radius: 0;
+    }
+    
+    h4 {
+        text-align: center;
+        padding: 30px;
     }
     #city-list {
         display: flex;
@@ -19,6 +24,14 @@
             padding: 30px;
             border-radius: 20px;
             margin: auto;
+            @media(max-width:653px) {
+                width: 500px;
+                @media(max-width: 510px) {
+                    display: block;
+                    width: 100%;
+                    border-radius: 0;
+                }
+            }
             
             
         }
@@ -28,11 +41,24 @@
             border-top-left-radius: 20px;
             border-bottom-left-radius: 20px;
             height: 100%;
+            @media(max-width:653px) {
+                width: 220px;
+                margin-right: 20px;
+                @media(max-width: 510px) {
+                    display: block;
+                    width: 100%;
+                    border-radius: 0;
+                    height: 400px;
+                    margin-bottom: 20px;
+                }
+            }
         }
         
         #destination-content{
             color: $font-color-light;
-            
+            @media(max-width: 510px) {
+                text-align: center;
+            }
             #city {
                 font-size: 24px;
             }
@@ -61,7 +87,12 @@
                             text-align: center;
                             .cel-temp,
                             .fah-temp {
-                                font-size: 13px;
+                                font-size: 16px;
+                            }
+                            #wind,
+                            #rain {
+                                font-size: 10px;
+                                padding: 2px;
                             }
                         }
                         
@@ -86,6 +117,9 @@
                     color:$font-color-light;
                     cursor: pointer;
                 }
+                @media(max-width: 510px) {
+                    width: 100%;
+                }
             }
         }
     }
@@ -94,5 +128,11 @@
         width: 700px;
         margin: auto;
         display: block;
+        @media (max-width: 1173px){
+            width: 650px;
+            @media(max-width:653px) {
+                width: 100%;
+            }
+        }
     }
 }

@@ -3,22 +3,50 @@
     #base-content {
         display: flex;
         justify-content: center;
+        @media (max-width: 1173px) {
+            display: flex;
+            flex-direction: column-reverse;
+            width: 100%;
+            margin: auto;
+        }
     }
     
     #travel-detail{
         text-align: center;
         margin-right: 30px;
+        @media (max-width: 1173px){
+            margin-right: 0;
+        }
         h1 {
             font-size: 96px;
             font-family: $primary-font;
             margin: 0;
             color: $font-color-dark;
+            @media (max-width: 1173px){
+                font-size: 78px;
+                @media(max-width: 510px){
+                    font-size: 69px;
+                    @media(max-width: 445px) {
+                        font-size: 59px;
+                        @media (max-width: 405px) {
+                            font-size: 49px;
+                        }
+
+                    }
+                }
+            }
         }
         h3 {
             font-size: 36px;
             margin: 0;
             margin-bottom: 20px;
             color: $font-color-dark;
+            @media (max-width: 1173px){ 
+                font-size: 25px;
+                @media (max-width: 405px) {
+                            font-size: 20px;
+                        }   
+            }
         }
         & form {
             padding: 20px;
@@ -37,12 +65,40 @@
                 margin: 10px;
                 border-radius: 30px;
                 border: none;
+                @media(max-width: 510px){
+                    width: 400px;
+                    @media(max-width: 445px) {
+                        width: 365px;
+                        @media (max-width: 405px) {
+                            width: 315px;
+                            @media(max-width: 356px) {
+                                width: 260px;
+                            }
+                        }
+                    }
+
+                }
             }
             #travel-date input {
                 padding: 20px;
                 margin: 10px;
                 border-radius: 30px;
                 border: none;
+                @media(max-width: 510px){
+                    display: inline-block;
+                    justify-content: center;
+                    width:400px;
+                    @media(max-width: 445px) {
+                        width: 365px;
+                        @media (max-width: 405px) {
+                            width: 315px;
+                            @media(max-width: 356px) {
+                                width: 260px;
+                            }
+                        }
+                    }
+
+                }
             }
             button {
                 background-color: $primary-color;
@@ -59,4 +115,16 @@
     #main-img img{
         width: 300px;
         margin-left: 60px;
+        @media (max-width: 1173px) {
+            width: 260px;
+            margin:auto;
+            display: block;
+            margin-bottom: 30px;  
+            @media(max-width:600px) {
+                    width: 230px;
+                    @media(max-width: 510px){
+                        width: 200px;
+                    }
+                }  
+        }
     }

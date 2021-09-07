@@ -3,6 +3,13 @@ footer {
   text-align: center;
   margin: 40px;
   font-size: 13px;
+  @media (max-width: 1173px) {
+        width: 100%;
+        display: block;
+        margin: auto;
+        padding: 30px;
+
+    }
   #img-footer {
       display: flex;
       justify-content: center;
@@ -10,6 +17,13 @@ footer {
     
     #img-footer img {
         width: 100px;
+        @media (max-width: 1173px) {
+            width: 80px;
+            @media (max-width: 510px) {
+                width: 75px;
+
+            }
+        }
     }
     #img-footer a {
         margin-top: 70px;

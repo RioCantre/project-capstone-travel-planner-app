@@ -43,6 +43,7 @@ const pixURL = `https://pixabay.com/api/?key=${process.env.PixKey}`;
 
 projectData = {};
 
+// Post API data
 app.post('/addLocation', async (req, res) => {
     const url = `${geoNamesURL}${projectData.city}${username}`;
     getData(url)
@@ -61,20 +62,23 @@ app.post('/addLocation', async (req, res) => {
 app.post('/addWeather', async (req, res) => {
     const url = `${weatherBitURL}lat=${projectData.lat}&lon=${projectData.lon}&key=${api_key}`;
     getData(url).then((response) => {
-        projectData.fDate = response.data[0].datetime;
         projectData.icon = response.data[0].weather.icon;
         projectData.min_temp = Math.floor(response.data[0].min_temp);
         projectData.max_temp = Math.floor(response.data[0].max_temp);
+        projectData.rain = Math.floor(response.data[0].pop);
+        projectData.wind = Math.floor(response.data[0].wind_spd);
 
-        projectData.fDate2 = response.data[1].datetime;
         projectData.icon2 = response.data[1].weather.icon;
         projectData.min_temp2 = Math.floor(response.data[1].min_temp);
         projectData.max_temp2 = Math.floor(response.data[1].max_temp);
+        projectData.rain2 = Math.floor(response.data[1].pop);
+        projectData.wind2 = Math.floor(response.data[1].wind_spd);
 
-        projectData.fDate3 = response.data[2].datetime;
         projectData.icon3 = response.data[2].weather.icon;
         projectData.min_temp3 = Math.floor(response.data[2].min_temp);
         projectData.max_temp3 = Math.floor(response.data[2].max_temp);
+        projectData.rain3 = Math.floor(response.data[2].pop);
+        projectData.wind3 = Math.floor(response.data[2].wind_spd);
         res.send(response);
     })
 });
@@ -87,6 +91,7 @@ app.post('/addPhoto', async (req, res) => {
     })
 });
 
+// Global get data
 const getData = async (url) => {
   try {
     const response = await fetch(url);
@@ -103,7 +108,7 @@ const getData = async (url) => {
 // designates what port the app will listen to for incoming requests
 const port = process.env.PORT || 5000;
 app.listen(port, () => {
-    console.log(`server is running on localhost: ${port}`)
+    console.log(`server is running on localhost: ${port}!`)
 })
 
 module.exports = app;

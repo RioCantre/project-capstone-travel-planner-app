@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Travel planner app : Adventuristic </title>
+    
 </head>
 
 <body>
@@ -36,29 +37,23 @@
                 </form>
             </div>
             <div id="main-img">
-                <img class="main-img" src="" alt="Adventure is out there photo">
+                <img class="main-img" src="/src/client/assets/img1.png" alt="Adventure is out there photo">
             </div>
         </section>
 
         <div id="container">
             <h4>Your current list</h4>
-            <div id="list" class="trip">
-
-               <div id="city-list">
-           
-                </div>
-                
-                
-            </div>
+            <div id="list" class="trip"> </div>
+            <div id="city-list"> </div>
             <div id="img-display">
-                <img class="img-display" src="" alt="Adventure is waiting">
+                <img class="img-display" src="/src/client/assets/img3.png" alt="Adventure is waiting">
             </div>
         </div>
     </main>
 
     <footer>
         <div id="img-footer">
-            <img class="img-footer" src="" alt="footer display"> <a href="#">Go up!</a>
+            <img class="img-footer" src="/src/client/assets/img2.png" alt="footer display"> <a href="#">Go up!</a>
         </div>
         <div id="author-info">
             Copyright &copy; 2021 - &nbsp;<a href="https://musing-ptolemy-95f7d2.netlify.app/index.html"
@@ -67,6 +62,15 @@
             Illustrations by <a href="https://dribbble.com/muratkalkavan" target="_blank"> Murat Kalkavan</a>
         </div>
     </footer>
-</body>
 
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
+
+</body>
 </html>
+
