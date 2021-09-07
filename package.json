@@ -4,11 +4,11 @@
   "description": "A capstone travel planner project",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --env=jsdom",
     "start": "node src/server/main.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack serve  --config webpack.dev.js ",
-    "lint" :"eslint src/client/js"
+    "lint": "eslint src/client/js"
   },
   "repository": {
     "type": "git",
@@ -39,6 +39,7 @@
     "file-loader": "^6.2.0",
     "html-loader": "^2.1.2",
     "html-webpack-plugin": "^5.3.2",
+    "jest": "^27.1.0",
     "mini-css-extract-plugin": "^2.2.0",
     "node-sass": "^6.0.1",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
