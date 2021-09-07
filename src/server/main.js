@@ -43,6 +43,7 @@ const pixURL = `https://pixabay.com/api/?key=${process.env.PixKey}`;
 
 projectData = {};
 
+// Post API data
 app.post('/addLocation', async (req, res) => {
     const url = `${geoNamesURL}${projectData.city}${username}`;
     getData(url)
@@ -90,6 +91,7 @@ app.post('/addPhoto', async (req, res) => {
     })
 });
 
+// Global get data
 const getData = async (url) => {
   try {
     const response = await fetch(url);

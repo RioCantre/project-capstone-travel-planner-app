@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Travel planner app : Adventuristic </title>
+    
 </head>
 
 <body>
@@ -61,6 +62,14 @@
             Illustrations by <a href="https://dribbble.com/muratkalkavan" target="_blank"> Murat Kalkavan</a>
         </div>
     </footer>
+
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 
 </body>
 </html>
