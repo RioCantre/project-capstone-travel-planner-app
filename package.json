@@ -8,8 +8,7 @@
     "start": "node src/server/server.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack serve  --config webpack.dev.js ",
-    "lint": "eslint src/client/js",
-    "postinstall": "ng build"
+    "lint": "eslint src/client/js"
   },
   "repository": {
     "type": "git",
