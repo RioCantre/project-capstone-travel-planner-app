@@ -27,6 +27,10 @@ This project requires to build out a travel planner app that, at a minimum, obta
 - [Weatherbit](https://www.weatherbit.io/account/create)
 - [Pixabay](https://pixabay.com/api/docs/)
 
+## App demo
+
+![Adventuristic](Adventuristic.gif)
+
 ## Credits
 
 - [Murat Kalkavan](https://dribbble.com/muratkalkavan)
