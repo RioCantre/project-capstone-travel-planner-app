@@ -4,8 +4,8 @@ import { updateUI } from './js/createTrip';
 
 document.getElementById('generate').addEventListener('click', generateEntry);
 
-import './styles/main.scss';
 
+import './styles/main.scss';
 
 import image from './assets/img1.png';
 import image2 from './assets/img2.png';
