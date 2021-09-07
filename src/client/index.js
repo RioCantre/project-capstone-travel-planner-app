@@ -3,7 +3,7 @@ import { postData, generateForm, reformatDate } from './js/app';
 import { generateEntry } from './js/formHandler';
 import { updateUI } from './js/createTrip';
 
-// main click event
+// main event listener
 document.getElementById('generate').addEventListener('click', generateEntry);
 
 // style
