@@ -33,7 +33,7 @@ app.post('/addEntry',(req, res) => {
   res.send(projectData);
 });
 
-// API url and keys 
+// API urls and used .env for keys
 const geoNamesURL = `http://api.geonames.org/searchJSON?q=`;
 const username = `&username=${process.env.GeoUsername}`;
 

@@ -1,4 +1,5 @@
 
+//  post data from server API 
 export const postData = async (url = "", data = {}) => {
   const res = await fetch(url, {
     method: "POST",
@@ -17,11 +18,13 @@ export const postData = async (url = "", data = {}) => {
 };
 
 
+// adds alert to the form 
 export const generateForm = ( city, departDate, returnDate) => {
   if (( city, departDate, returnDate !== "")) return true;
 };
 
 
+// reformat default date
 export const reformatDate = (departDate) => {
   return departDate.toLocaleDateString('en-US');
 };

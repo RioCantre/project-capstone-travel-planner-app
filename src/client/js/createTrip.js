@@ -68,6 +68,7 @@ export const updateUI = async (url) => {
                         </div>
                     </div> `;
         
+        // shows the details of the trip
         travelList.innerHTML = trip;
         
     } catch (error) {

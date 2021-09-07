@@ -13,10 +13,11 @@ export async function generateEntry(event) {
  
     if (generateForm(city, departDate, returnDate)) {
 
+        // shows value of departure date
         const tripDate = new Date(departDate);
         const endDate = new Date(returnDate);
 
-
+        // shows value of the number of days left before departure
         const countdownDate = new Date(endDate).getTime();
         const today = new Date().getTime();
         const difference = countdownDate - today;
