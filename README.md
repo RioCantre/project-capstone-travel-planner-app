@@ -27,9 +27,29 @@ This project requires to build out a travel planner app that, at a minimum, obta
 - [Weatherbit](https://www.weatherbit.io/account/create)
 - [Pixabay](https://pixabay.com/api/docs/)
 
+
 ## App demo
 
 ![Adventuristic](Adventuristic.gif)
+
+## Install locally
+```
+// Create account and provide your own API keys
+
+// In the terminal, run the following commands
+npm install
+
+// Run local webpack for the development mode
+npm run build-dev
+
+// Run command for the production mode
+npm run build-prod
+npm start
+
+// Test the app
+npm run test
+
+```
 
 ## Credits
 
