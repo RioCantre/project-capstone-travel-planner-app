@@ -2,10 +2,10 @@
   "name": "project-capstone-travel-planner-app",
   "version": "1.0.0",
   "description": "Adventuristic: A travel planner app",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest --env=jsdom --no-cache --verbose",
-    "start": "node src/server/server.js",
+    "start": "node src/server/index.js",
     "build-prod": "webpack --config webpack.prod.js",
     "build-dev": "webpack serve  --config webpack.dev.js ",
     "lint": "eslint src/client/js"
