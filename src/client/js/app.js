@@ -1,5 +1,5 @@
 
-//  post data from server API 
+//  post data from index API data
 export const postData = async (url = "", data = {}) => {
   const res = await fetch(url, {
     method: "POST",
