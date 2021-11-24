@@ -59,5 +59,8 @@ npm run test
 ## License
 This is a capstone project of [Udacity's Front End Nanodegree Content & Project Resources](https://github.com/udacity/fend/tree/refresh-2019/). It is Copyright@2021 - Rio Cantre.
 
+### ✨ [Portfolio Preview](https://github.com/RioCantre/rioc-portfolio/blob/main/README.md) 
+
+
 
  
